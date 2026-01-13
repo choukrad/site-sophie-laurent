@@ -1,14 +1,17 @@
-# System files
+# Dependencies
+node_modules/
+
+# OS files
 .DS_Store
 Thumbs.db
 
+# IDE
+.idea/
+.vscode/
+*.swp
+
 # Archives
 *.zip
-*.tar.gz
 
 # Logs
 *.log
-
-# Dependencies (if any in future)
-node_modules/
-.npm/
