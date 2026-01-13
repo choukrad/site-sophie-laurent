@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sophie Laurent, psychologue clinicienne à Paris. Thérapie individuelle, de couple, enfants et adolescents. Accompagnement bienveillant et confidentiel.">
+  <meta name="keywords" content="psychologue, Paris, thérapie, anxiété, dépression, couple, enfants">
+
+  <title>Sophie Laurent | Psychologue Clinicienne à Paris</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+
+  <!-- ========================================
+       HEADER
+       ======================================== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">Sophie Laurent</a>
+
+      <nav class="header__nav">
+        <a href="approche.html" class="header__nav-link">Approche</a>
+        <a href="services.html" class="header__nav-link">Services</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="contact.html" class="header__nav-link">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="header__cta">Prendre RDV</a>
+
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================
+       HERO SECTION
+       ======================================== -->
+  <section class="hero">
+    <div class="hero__image">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop&crop=face"
+        alt="Sophie Laurent, Psychologue" loading="eager">
+    </div>
+    <div class="hero__content">
+      <p class="hero__subtitle fade-in">Je suis</p>
+      <h1 class="hero__title fade-in delay-100">Sophie Laurent</h1>
+      <p class="hero__text fade-in delay-200">
+        Je suis psychologue clinicienne spécialisée dans les thérapies intégratives.
+        Je vous accompagne avec une approche humaniste et personnalisée pour surmonter
+        vos difficultés et créer une vie épanouissante. Chaque personne est unique,
+        et je suis là pour vous offrir un espace sécurisé pour votre transformation.
+      </p>
+      <a href="services.html" class="hero__cta fade-in delay-300">Mes Services</a>
+    </div>
+  </section>
+
+  <!-- ========================================
+       TESTIMONIAL SECTION
+       ======================================== -->
+  <section class="testimonial-section">
+    <button class="testimonial__nav testimonial__nav--prev" aria-label="Précédent">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div class="container fade-in">
+      <div class="testimonial__slide">
+        <p class="testimonial__quote">
+          Le travail avec Sophie a été une expérience transformatrice.
+          Sa guidance m'a apporté clarté, croissance et un changement durable.
+          Je me sens plus autonome et aligné que jamais.
+        </p>
+        <p class="testimonial__label">Client Review</p>
+      </div>
+
+      <div class="testimonial__slide" style="display: none;">
+        <p class="testimonial__quote">
+          Sophie m'a aidé à traverser une période difficile avec beaucoup
+          de bienveillance et de professionnalisme. Je recommande vivement
+          son accompagnement à toute personne en quête de mieux-être.
+        </p>
+        <p class="testimonial__label">Client Review</p>
+      </div>
+
+      <div class="testimonial__slide" style="display: none;">
+        <p class="testimonial__quote">
+          Grâce à la thérapie avec Sophie, j'ai pu comprendre mes schémas
+          de pensée et développer des outils concrets pour gérer mon anxiété.
+          Une professionnelle exceptionnelle.
+        </p>
+        <p class="testimonial__label">Client Review</p>
+      </div>
+    </div>
+
+    <button class="testimonial__nav testimonial__nav--next" aria-label="Suivant">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </section>
+
+  <!-- ========================================
+       SERVICES SECTION (Accordion)
+       ======================================== -->
+  <section class="services-section">
+    <div class="services__intro">
+      <h2 class="services__title">Comment <em>je peux</em><br>vous aider</h2>
+      <a href="contact.html" class="services__cta">Prendre RDV</a>
+    </div>
+    <div class="services__list">
+
+      <div class="service-item">
+        <div class="service-item__header">
+          <span class="service-item__title">Thérapie Holistique</span>
+          <span class="service-item__icon">+</span>
+        </div>
+        <div class="service-item__content">
+          <p class="service-item__text">
+            Une approche globale qui prend en compte le corps, l'esprit et les émotions.
+            Ensemble, nous travaillons sur tous les aspects de votre être pour retrouver
+            un équilibre durable et une harmonie intérieure.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item__header">
+          <span class="service-item__title">Gestion du Trauma</span>
+          <span class="service-item__icon">+</span>
+        </div>
+        <div class="service-item__content">
+          <p class="service-item__text">
+            Accompagnement spécialisé pour guérir des blessures du passé.
+            Avec des techniques douces et respectueuses de votre rythme,
+            nous travaillons ensemble à libérer les traumatismes qui vous limitent.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item__header">
+          <span class="service-item__title">Anxiété & Stress</span>
+          <span class="service-item__icon">+</span>
+        </div>
+        <div class="service-item__content">
+          <p class="service-item__text">
+            Apprenez des techniques efficaces pour apaiser votre esprit,
+            réduire le stress et surmonter les troubles anxieux.
+            Retrouvez une vie plus sereine grâce à des outils concrets et personnalisés.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item__header">
+          <span class="service-item__title">Thérapie de Couple</span>
+          <span class="service-item__icon">+</span>
+        </div>
+        <div class="service-item__content">
+          <p class="service-item__text">
+            Renforcez votre relation, améliorez la communication et résolvez les conflits.
+            Un espace neutre et bienveillant pour traverser les difficultés ensemble
+            et retrouver l'harmonie dans votre couple.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item__header">
+          <span class="service-item__title">Développement Personnel</span>
+          <span class="service-item__icon">+</span>
+        </div>
+        <div class="service-item__content">
+          <p class="service-item__text">
+            Prévention et rétablissement du surmenage. Trouvez l'équilibre entre
+            vie professionnelle et personnelle, et restaurez votre énergie
+            et votre motivation pour une vie épanouie.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="footer">
+    <div class="footer__left">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+      <a href="approche.html">En savoir plus</a>
+    </div>
+    <div class="footer__right">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+      </svg>
+      <span>sophielaurent.fr</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

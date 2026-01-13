@@ -1,0 +1,14 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+
+# Dependencies (if any in future)
+node_modules/
+.npm/
