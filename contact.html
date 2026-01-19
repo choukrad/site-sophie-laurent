@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Prendre rendez-vous avec Sophie Laurent, psychologue à Paris. Formulaire de contact et coordonnées.">
-    <title>Contact & Rendez-vous | Sophie Laurent - Psychologue</title>
+        content="Prendre rendez-vous avec Sophie Laurent, psychologue clinicienne à Paris. Réservation en ligne simple et confidentielle.">
+    <title>Prendre Rendez-vous | Sophie Laurent - Psychologue</title>
 
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
@@ -15,6 +15,346 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ========================================
+       BOOKING PAGE STYLES
+       ======================================== */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .booking-page {
+            padding-top: calc(var(--header-height) + var(--space-16));
+            padding-bottom: var(--space-16);
+            background: var(--color-cream);
+            min-height: 100vh;
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .booking-header h1 {
+            font-family: var(--font-serif);
+            font-size: var(--text-4xl);
+            font-weight: var(--font-light);
+            margin-bottom: var(--space-4);
+        }
+
+        .booking-header p {
+            color: var(--color-gray);
+            font-size: var(--text-lg);
+            font-weight: var(--font-light);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .booking-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+        }
+
+        .booking-section-title {
+            font-family: var(--font-serif);
+            font-size: var(--text-2xl);
+            font-weight: var(--font-light);
+            margin-bottom: var(--space-10);
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .booking-section-title span {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-gray-light);
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: var(--space-10);
+            border-right: 1px solid var(--color-border);
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-2);
+            margin-bottom: var(--space-6);
+        }
+
+        .calendar-nav button {
+            padding: var(--space-2);
+            color: var(--color-gray-light);
+            transition: color var(--transition-fast);
+        }
+
+        .calendar-nav button:hover {
+            color: var(--color-black);
+        }
+
+        .calendar-nav p {
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-black);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: var(--space-2);
+        }
+
+        .calendar-day-header {
+            font-size: 10px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            color: var(--color-gray-light);
+            text-align: center;
+            padding: var(--space-2) 0;
+            letter-spacing: 0.05em;
+        }
+
+        .calendar-day {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-sm);
+            font-weight: var(--font-light);
+            color: var(--color-gray);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .calendar-day:hover:not(.disabled):not(.selected) {
+            background: var(--color-cream);
+        }
+
+        .calendar-day.disabled {
+            color: #ddd;
+            cursor: default;
+        }
+
+        .calendar-day.selected {
+            background: var(--color-black);
+            color: var(--color-white);
+            font-weight: var(--font-medium);
+        }
+
+        .calendar-day.today {
+            border: 1px solid var(--color-border);
+        }
+
+        /* Time Slots Section */
+        .time-section {
+            padding: var(--space-10);
+            background: #FAFAFA;
+        }
+
+        .time-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-gray-light);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-8);
+        }
+
+        .time-slots {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            max-height: 340px;
+            overflow-y: auto;
+            padding-right: var(--space-3);
+        }
+
+        .time-slots::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .time-slots::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .time-slots::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 10px;
+        }
+
+        .time-slot {
+            padding: var(--space-4) var(--space-5);
+            border: 1px solid var(--color-border);
+            background: var(--color-white);
+            font-size: 12px;
+            font-weight: var(--font-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-gray);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .time-slot:hover:not(.selected) {
+            border-color: var(--color-black);
+            color: var(--color-black);
+        }
+
+        .time-slot.selected {
+            border: 2px solid var(--color-black);
+            color: var(--color-black);
+            font-weight: var(--font-semibold);
+            background: rgba(26, 26, 26, 0.03);
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: var(--space-10);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-white);
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .form-field label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: var(--font-semibold);
+            color: var(--color-gray);
+            padding-left: 2px;
+        }
+
+        .form-field input,
+        .form-field select {
+            border: none;
+            border-bottom: 1px solid var(--color-border);
+            background: transparent;
+            padding: var(--space-3) 2px;
+            font-size: var(--text-sm);
+            color: var(--color-black);
+            transition: border-color var(--transition-fast);
+            border-radius: 0;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            outline: none;
+            border-bottom-color: var(--color-black);
+        }
+
+        .form-field input::placeholder {
+            color: #bbb;
+        }
+
+        .form-field.full-width {
+            grid-column: 1 / -1;
+            margin-top: var(--space-8);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: var(--space-5) var(--space-8);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: var(--font-semibold);
+            transition: opacity var(--transition-fast);
+        }
+
+        .submit-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-10);
+            padding: var(--space-8) var(--space-4);
+            border-top: 1px solid var(--color-border);
+            max-width: 1100px;
+            margin: var(--space-12) auto 0;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+        }
+
+        .info-card .material-symbols-outlined {
+            font-size: 24px;
+            color: var(--color-gray-light);
+        }
+
+        .info-card h4 {
+            font-family: var(--font-serif);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-1);
+        }
+
+        .info-card p {
+            font-size: 12px;
+            color: var(--color-gray);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-section {
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,90 +376,157 @@
         </div>
     </header>
 
-    <!-- CONTACT SECTION -->
-    <section class="contact-section">
+    <!-- BOOKING PAGE -->
+    <main class="booking-page">
+        <div class="container">
 
-        <!-- Form Side -->
-        <div class="contact__form-side">
-            <h1 class="contact__title fade-in">Prendre Rendez-vous</h1>
-            <p class="contact__subtitle fade-in delay-100">
-                Votre confidentialité est primordiale. N'hésitez pas à me contacter
-                en toute sérénité pour un premier échange.
-            </p>
+            <!-- Header -->
+            <div class="booking-header fade-in">
+                <h1>Commencez Votre Chemin vers le Mieux-Être</h1>
+                <p>Planifiez une séance privée. Choisissez une date et une heure qui s'accordent avec votre espace de
+                    réflexion.</p>
+            </div>
 
-            <form class="contact-form fade-in delay-200" id="contact-form">
-                <div class="form-group">
-                    <label class="form-label">Nom et Prénom</label>
-                    <input type="text" class="form-input" required>
+            <!-- Booking Card -->
+            <div class="booking-card fade-in delay-100">
+
+                <!-- Calendar + Time Grid -->
+                <div class="booking-grid">
+
+                    <!-- Calendar Section -->
+                    <div class="calendar-section">
+                        <h2 class="booking-section-title">
+                            <span>01</span>
+                            Choisissez une Date
+                        </h2>
+
+                        <div class="calendar-nav">
+                            <button id="prev-month" aria-label="Mois précédent">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <p id="current-month">Janvier 2026</p>
+                            <button id="next-month" aria-label="Mois suivant">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </button>
+                        </div>
+
+                        <div class="calendar-grid" id="calendar">
+                            <div class="calendar-day-header">Dim</div>
+                            <div class="calendar-day-header">Lun</div>
+                            <div class="calendar-day-header">Mar</div>
+                            <div class="calendar-day-header">Mer</div>
+                            <div class="calendar-day-header">Jeu</div>
+                            <div class="calendar-day-header">Ven</div>
+                            <div class="calendar-day-header">Sam</div>
+                            <!-- Days will be generated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Time Slots Section -->
+                    <div class="time-section">
+                        <h2 class="booking-section-title">
+                            <span>02</span>
+                            Choisissez un Horaire
+                        </h2>
+
+                        <p class="time-label" id="selected-date-label">Créneaux disponibles</p>
+
+                        <div class="time-slots" id="time-slots">
+                            <button class="time-slot" data-time="09:00">09:00</button>
+                            <button class="time-slot" data-time="10:00">10:00</button>
+                            <button class="time-slot selected" data-time="11:00">11:00</button>
+                            <button class="time-slot" data-time="14:00">14:00</button>
+                            <button class="time-slot" data-time="15:00">15:00</button>
+                            <button class="time-slot" data-time="16:00">16:00</button>
+                            <button class="time-slot" data-time="17:00">17:00</button>
+                            <button class="time-slot" data-time="18:00">18:00</button>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" required>
+                <!-- Form Section -->
+                <div class="form-section">
+                    <h2 class="booking-section-title">
+                        <span>03</span>
+                        Vos Informations
+                    </h2>
+
+                    <form class="booking-form" id="booking-form">
+                        <div class="form-field">
+                            <label>Nom et Prénom</label>
+                            <input type="text" placeholder="Jean Dupont" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label>Adresse Email</label>
+                            <input type="email" placeholder="jean@exemple.com" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label>Téléphone</label>
+                            <input type="tel" placeholder="06 12 34 56 78">
+                        </div>
+
+                        <div class="form-field">
+                            <label>Motif de Consultation</label>
+                            <select required>
+                                <option value="">Sélectionnez un motif</option>
+                                <option value="anxiete">Anxiété & Stress</option>
+                                <option value="depression">Dépression</option>
+                                <option value="couple">Thérapie de Couple</option>
+                                <option value="enfant">Enfant / Adolescent</option>
+                                <option value="burnout">Burn-out</option>
+                                <option value="deuil">Deuil & Trauma</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field full-width">
+                            <button type="submit" class="submit-btn">Confirmer le Rendez-vous</button>
+                        </div>
+                    </form>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Téléphone</label>
-                    <input type="tel" class="form-input">
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-cards fade-in delay-200">
+                <div class="info-card">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <div>
+                        <h4>Durée</h4>
+                        <p>Chaque séance dure 50 minutes, offrant un temps suffisant pour un travail thérapeutique en
+                            profondeur.</p>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Message</label>
-                    <textarea class="form-textarea" required></textarea>
+                <div class="info-card">
+                    <span class="material-symbols-outlined">event_busy</span>
+                    <div>
+                        <h4>Annulation</h4>
+                        <p>Un préavis de 24 heures est apprécié pour tout report afin de maintenir l'équilibre du
+                            cabinet.</p>
+                    </div>
                 </div>
 
-                <button type="submit" class="form-submit">Envoyer le message</button>
-            </form>
-        </div>
-
-        <!-- Info Side -->
-        <div class="contact__info-side">
-            <div class="fade-in delay-300">
-                <div class="info-block">
-                    <span class="info-label">Cabinet</span>
-                    <p class="info-text">
-                        12 Rue de la Paix<br>
-                        75002 Paris, France
-                    </p>
-                </div>
-
-                <div class="info-block">
-                    <span class="info-label">Contact</span>
-                    <p class="info-text">
-                        +33 1 23 45 67 89<br>
-                        contact@sophielaurent.fr
-                    </p>
-                </div>
-
-                <div class="info-block">
-                    <span class="info-label">Horaires</span>
-                    <p class="info-text">
-                        Lun - Ven : 09h00 - 20h00<br>
-                        Samedi : 09h00 - 13h00
-                    </p>
-                </div>
-
-                <div class="emergency-box">
-                    <strong>Urgence Psychologique</strong>
-                    <p>En cas de crise ou d'urgence vitale, veuillez contacter le 15 (SAMU) ou le 3114 (Numéro national
-                        de prévention du suicide).</p>
-                </div>
-
-                <!-- Map Placeholder -->
-                <div
-                    style="margin-top: var(--space-8); height: 200px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; color: #888;">
-                    [Carte Google Maps ici]
+                <div class="info-card">
+                    <span class="material-symbols-outlined">security</span>
+                    <div>
+                        <h4>Confidentialité</h4>
+                        <p>Vos séances sont protégées par le secret professionnel et respectent les normes RGPD.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </section>
+        </div>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer__left">
             <a href="index.html">Retour à l'accueil</a>
-            <span>&copy; 2024 Sophie Laurent</span>
+            <span>© 2024 Sophie Laurent</span>
         </div>
         <div class="footer__right">
             <a href="mentions-legales.html">Mentions légales</a>
@@ -128,6 +535,115 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+    // =====================================
+    // CALENDAR FUNCTIONALITY
+    // =====================================
+    
+    const calendarGrid = document.getElementById('calendar');
+    const currentMonthEl = document.getElementById('current-month');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
+    const selectedDateLabel = document.getElementById('selected-date-label');
+    const timeSlots = document.querySelectorAll('.time-slot');
+    
+    const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
+                    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    
+    let currentDate = new Date();
+    let selectedDate = null;
+    let selectedTime = '11:00';
+    
+    function renderCalendar() {
+      // Clear existing days (keep headers)
+      const existingDays = calendarGrid.querySelectorAll('.calendar-day');
+      existingDays.forEach(day => day.remove());
+      
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      
+      currentMonthEl.textContent = `${months[month]} ${year}`;
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const today = new Date();
+      
+      // Add empty cells for days before the 1st
+      for (let i = 0; i < firstDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day disabled';
+        calendarGrid.appendChild(emptyDay);
+      }
+      
+      // Add days of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayEl = document.createElement('button');
+        dayEl.className = 'calendar-day';
+        dayEl.textContent = day;
+        
+        const thisDate = new Date(year, month, day);
+        
+        // Disable past dates and weekends
+        if (thisDate < today || thisDate.getDay() === 0) {
+          dayEl.classList.add('disabled');
+        } else {
+          dayEl.addEventListener('click', () => selectDate(day, month, year));
+        }
+        
+        // Mark today
+        if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+          dayEl.classList.add('today');
+        }
+        
+        // Mark selected
+        if (selectedDate && day === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear()) {
+          dayEl.classList.add('selected');
+        }
+        
+        calendarGrid.appendChild(dayEl);
+      }
+    }
+    
+    function selectDate(day, month, year) {
+      selectedDate = new Date(year, month, day);
+      selectedDateLabel.textContent = `Créneaux disponibles : ${day} ${months[month]} ${year}`;
+      renderCalendar();
+    }
+    
+    prevMonthBtn.addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar();
+    });
+    
+    nextMonthBtn.addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar();
+    });
+    
+    // Time slot selection
+    timeSlots.forEach(slot => {
+      slot.addEventListener('click', () => {
+        timeSlots.forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+        selectedTime = slot.dataset.time;
+      });
+    });
+    
+    // Form submission
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (!selectedDate) {
+        alert('Veuillez sélectionner une date.');
+        return;
+      }
+      
+      alert(`Merci ! Votre demande de rendez-vous pour le ${selectedDate.getDate()} ${months[selectedDate.getMonth()]} à ${selectedTime} a bien été envoyée. Nous vous confirmerons par email.`);
+    });
+    
+    // Initialize
+    renderCalendar();
+    </script>
 </body>
 
 </html>
