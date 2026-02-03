@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Blog de Sophie Laurent, psychologue. Articles et ressources sur la santé mentale, l'anxiété, et le bien-être.">
-    <title>Blog & Ressources | Sophie Laurent - Psychologue</title>
+        content="Articles et réflexions sur la psychologie, le bien-être et la santé mentale par Sophie Laurent.">
+    <title>Journal | Sophie Laurent - Psychologue</title>
 
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
@@ -15,6 +15,156 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ========================================
+       BLOG PAGE STYLES - EDITORIAL
+       ======================================== */
+
+        .blog-hero {
+            padding-top: calc(var(--header-height) + var(--space-20));
+            padding-bottom: var(--space-16);
+            text-align: center;
+            background: var(--color-cream);
+        }
+
+        .blog-hero__label {
+            font-size: 11px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-gray-light);
+            margin-bottom: var(--space-6);
+        }
+
+        .blog-hero__title {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: var(--font-light);
+            margin-bottom: var(--space-8);
+            line-height: 1.1;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-10);
+            padding: var(--space-20) 0;
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            cursor: pointer;
+            group: true;
+            /* for reference */
+        }
+
+        .article-card__image {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .article-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.7s ease, transform 0.7s ease;
+        }
+
+        .article-card:hover .article-card__image img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+
+        .article-card__meta {
+            font-size: 11px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-gray-light);
+        }
+
+        .article-card__title {
+            font-family: var(--font-serif);
+            font-size: var(--text-2xl);
+            font-weight: var(--font-normal);
+            line-height: 1.3;
+            transition: color var(--transition-fast);
+        }
+
+        .article-card:hover .article-card__title {
+            color: var(--color-gray);
+        }
+
+        .article-card__excerpt {
+            font-size: var(--text-sm);
+            color: var(--color-gray);
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-card__link {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: var(--font-semibold);
+            color: var(--color-black);
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        /* Featured Article (First one) */
+        .blog-grid .article-card:first-child {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+            margin-bottom: var(--space-12);
+        }
+
+        .blog-grid .article-card:first-child .article-card__image {
+            aspect-ratio: 16/9;
+        }
+
+        .blog-grid .article-card:first-child .article-card__title {
+            font-size: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-16);
+            }
+
+            .blog-grid .article-card:first-child {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+
+            .blog-grid .article-card:first-child .article-card__title {
+                font-size: 2rem;
+            }
+
+            .blog-hero__title {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,114 +186,94 @@
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="service-hero">
+    <main>
+
+        <!-- HERO -->
+        <section class="blog-hero">
+            <div class="container">
+                <p class="blog-hero__label fade-in">Journal</p>
+                <h1 class="blog-hero__title fade-in delay-100">Réflexions & <br><em>Perspectives</em></h1>
+            </div>
+        </section>
+
         <div class="container">
-            <h1 class="service-hero__title fade-in">Blog & Ressources</h1>
-            <p class="service-hero__subtitle fade-in delay-100">
-                Articles et réflexions pour mieux comprendre la psychologie au quotidien
-            </p>
-        </div>
-    </section>
+            <div class="blog-grid">
 
-    <!-- BLOG SECTION -->
-    <section class="blog-section">
-        <div class="container">
-            <div class="blog-grid fade-in delay-200">
-
-                <article class="blog-card">
-                    <div class="blog-card__image">
-                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=500&h=400&fit=crop"
-                            alt="Article 1">
+                <!-- ARTICLE 1 (FEATURED) -->
+                <article class="article-card fade-in delay-200">
+                    <div class="article-card__image">
+                        <img src="https://images.unsplash.com/photo-1494178270175-e96de2971df9?w=1200&h=800&fit=crop"
+                            alt="Nature calme">
                     </div>
-                    <p class="blog-card__meta">Bien-être • 12 Jan 2024</p>
-                    <h3 class="blog-card__title">Gérer l'anxiété au quotidien</h3>
-                    <p class="blog-card__excerpt">
-                        Des techniques simples et efficaces pour apaiser son esprit et retrouver
-                        le calme dans les moments de stress intense.
-                    </p>
-                    <a href="#" class="blog-card__link">Lire l'article</a>
+                    <div class="article-card__content">
+                        <div class="article-card__meta">Bien-être • 12 Jan 2024</div>
+                        <h2 class="article-card__title">L'art de ralentir dans un monde bruyant</h2>
+                        <p class="article-card__excerpt">
+                            Dans notre société de l'immédiateté, prendre le temps de ne rien faire est devenu un acte de
+                            résistance.
+                            Découvrez comment la "slow-life" peut apaiser votre système nerveux et redonner du sens à
+                            votre quotidien.
+                        </p>
+                        <span class="article-card__link">Lire l'article <span class="material-symbols-outlined"
+                                style="font-size: 14px;">arrow_forward</span></span>
+                    </div>
                 </article>
 
-                <article class="blog-card">
-                    <div class="blog-card__image">
-                        <img src="https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=500&h=400&fit=crop"
-                            alt="Article 2">
+                <!-- ARTICLE 2 -->
+                <article class="article-card fade-in delay-300">
+                    <div class="article-card__image">
+                        <img src="https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=800&h=600&fit=crop"
+                            alt="Zen stones">
                     </div>
-                    <p class="blog-card__meta">Couples • 05 Jan 2024</p>
-                    <h3 class="blog-card__title">Communication non-violente</h3>
-                    <p class="blog-card__excerpt">
-                        Comment exprimer ses besoins sans blesser l'autre ? Les clés d'une
-                        relation saine et d'un dialogue constructif.
+                    <div class="article-card__meta">Gestion du Stress • 5 Jan 2024</div>
+                    <h2 class="article-card__title">Comprendre le cycle du stress</h2>
+                    <p class="article-card__excerpt">
+                        Pourquoi nous sentons-nous encore épuisés même après le départ du danger ? Apprenez à compléter
+                        le cycle biologique du stress.
                     </p>
-                    <a href="#" class="blog-card__link">Lire l'article</a>
+                    <span class="article-card__link">Lire l'article</span>
                 </article>
 
-                <article class="blog-card">
-                    <div class="blog-card__image">
-                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?w=500&h=400&fit=crop"
-                            alt="Article 3">
+                <!-- ARTICLE 3 -->
+                <article class="article-card fade-in delay-300">
+                    <div class="article-card__image">
+                        <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=800&h=600&fit=crop"
+                            alt="Ecriture journal">
                     </div>
-                    <p class="blog-card__meta">Enfants • 28 Dec 2023</p>
-                    <h3 class="blog-card__title">L'hypersensibilité chez l'enfant</h3>
-                    <p class="blog-card__excerpt">
-                        Comprendre et accompagner les émotions intenses chez les plus jeunes.
-                        Un guide pour les parents.
+                    <div class="article-card__meta">Thérapie • 20 Déc 2023</div>
+                    <h2 class="article-card__title">Pourquoi consulter ?</h2>
+                    <p class="article-card__excerpt">
+                        Il n'est pas nécessaire d'aller mal pour aller mieux. La thérapie comme outil de connaissance de
+                        soi et d'épanouissement.
                     </p>
-                    <a href="#" class="blog-card__link">Lire l'article</a>
+                    <span class="article-card__link">Lire l'article</span>
                 </article>
 
-                <article class="blog-card">
-                    <div class="blog-card__image">
-                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=400&fit=crop"
-                            alt="Article 4">
+                <!-- ARTICLE 4 -->
+                <article class="article-card fade-in delay-300">
+                    <div class="article-card__image">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop"
+                            alt="Discussion">
                     </div>
-                    <p class="blog-card__meta">Méditation • 15 Dec 2023</p>
-                    <h3 class="blog-card__title">Les bienfaits de la pleine conscience</h3>
-                    <p class="blog-card__excerpt">
-                        Intégrer la méditation dans sa routine journalière pour réduire le stress
-                        et améliorer sa concentration.
+                    <div class="article-card__meta">Relations • 10 Déc 2023</div>
+                    <h2 class="article-card__title">Les clés d'une communication apaisée</h2>
+                    <p class="article-card__excerpt">
+                        Sortir des jeux de pouvoir et des non-dits pour construire des relations authentiques et
+                        nourrissantes.
                     </p>
-                    <a href="#" class="blog-card__link">Lire l'article</a>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card__image">
-                        <img src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?w=500&h=400&fit=crop"
-                            alt="Article 5">
-                    </div>
-                    <p class="blog-card__meta">Travail • 02 Dec 2023</p>
-                    <h3 class="blog-card__title">Prévenir le burn-out</h3>
-                    <p class="blog-card__excerpt">
-                        Reconnaître les signes avant-coureurs de l'épuisement professionnel
-                        et savoir dire stop avant qu'il ne soit trop tard.
-                    </p>
-                    <a href="#" class="blog-card__link">Lire l'article</a>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-card__image">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=500&h=400&fit=crop"
-                            alt="Article 6">
-                    </div>
-                    <p class="blog-card__meta">Sommeil • 20 Nov 2023</p>
-                    <h3 class="blog-card__title">Retrouver un sommeil réparateur</h3>
-                    <p class="blog-card__excerpt">
-                        Conseils et astuces pour améliorer la qualité de vos nuits et lutter
-                        contre les insomnies chroniques.
-                    </p>
-                    <a href="#" class="blog-card__link">Lire l'article</a>
+                    <span class="article-card__link">Lire l'article</span>
                 </article>
 
             </div>
         </div>
-    </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer__left">
             <a href="index.html">Retour à l'accueil</a>
-            <span>&copy; 2024 Sophie Laurent</span>
+            <span>© 2024 Sophie Laurent</span>
         </div>
         <div class="footer__right">
             <a href="mentions-legales.html">Mentions légales</a>
