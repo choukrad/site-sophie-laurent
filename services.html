@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Services de psychologie à Paris : thérapie individuelle, de couple, enfants et adolescents.">
+        content="Services de psychologie à Paris : thérapie individuelle, de couple, enfants et adolescents. Sophie Laurent, psychologue clinicienne.">
     <title>Mes Services | Sophie Laurent - Psychologue</title>
 
     <link rel="icon" type="image/svg+xml"
@@ -15,6 +15,398 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ========================================
+       SERVICES PAGE - EDITORIAL STYLE
+       ======================================== */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Hero */
+        .services-hero {
+            padding-top: calc(var(--header-height) + var(--space-20));
+            padding-bottom: var(--space-16);
+            text-align: center;
+            background: var(--color-cream);
+        }
+
+        .services-hero__label {
+            font-size: 11px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-gray);
+            margin-bottom: var(--space-6);
+        }
+
+        .services-hero__title {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: var(--font-light);
+            line-height: 1.1;
+            margin-bottom: var(--space-6);
+        }
+
+        .services-hero__title em {
+            font-style: italic;
+        }
+
+        .services-hero__text {
+            font-size: var(--text-xl);
+            color: var(--color-gray);
+            font-weight: var(--font-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-hero__arrow {
+            margin-top: var(--space-10);
+            color: var(--color-gray-light);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        /* Service Section */
+        .service-block {
+            padding: var(--space-24) 0;
+        }
+
+        .service-block--alt {
+            background: #F0F2F5;
+        }
+
+        .service-block__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-8);
+        }
+
+        .service-block--reverse .service-block__inner {
+            direction: rtl;
+        }
+
+        .service-block--reverse .service-block__content,
+        .service-block--reverse .service-block__image {
+            direction: ltr;
+        }
+
+        .service-block__content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+
+        .service-block__number {
+            font-size: 11px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-gray-light);
+        }
+
+        .service-block__title {
+            font-family: var(--font-serif);
+            font-size: var(--text-4xl);
+            font-weight: var(--font-medium);
+            line-height: 1.2;
+        }
+
+        .service-block__text {
+            font-size: var(--text-lg);
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        .service-block__quote {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--color-gray);
+            font-size: var(--text-lg);
+            padding-left: var(--space-4);
+            border-left: 2px solid var(--color-border);
+        }
+
+        .service-block__features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+
+        .service-block__feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+        }
+
+        .service-block__feature .material-symbols-outlined {
+            color: var(--color-black);
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .service-block__feature span:last-child {
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+        }
+
+        .service-block__link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: var(--font-semibold);
+            font-size: var(--text-sm);
+            margin-top: var(--space-4);
+            transition: color var(--transition-fast);
+        }
+
+        .service-block__link:hover {
+            color: var(--color-gray);
+        }
+
+        .service-block__link .material-symbols-outlined {
+            transition: transform var(--transition-fast);
+        }
+
+        .service-block__link:hover .material-symbols-outlined {
+            transform: translateX(4px);
+        }
+
+        .service-block__image {
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-block__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.7s ease, transform 0.7s ease;
+        }
+
+        .service-block__image:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+
+        /* Feature Cards Grid */
+        .service-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        .service-card-mini {
+            padding: var(--space-5);
+            background: rgba(26, 26, 26, 0.03);
+            border-radius: 4px;
+        }
+
+        .service-card-mini h4 {
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-1);
+        }
+
+        .service-card-mini p {
+            font-size: 12px;
+            color: var(--color-gray);
+            line-height: 1.5;
+        }
+
+        /* Dark Section - Further Specializations */
+        .services-dark {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: var(--space-24) 0;
+        }
+
+        .services-dark__header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .services-dark__title {
+            font-family: var(--font-serif);
+            font-size: var(--text-4xl);
+            font-weight: var(--font-normal);
+            margin-bottom: var(--space-6);
+        }
+
+        .services-dark__line {
+            width: 60px;
+            height: 2px;
+            background: var(--color-white);
+            margin: 0 auto;
+            opacity: 0.3;
+        }
+
+        .services-dark__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .services-dark__card {
+            padding: var(--space-10);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            transition: background var(--transition-fast);
+        }
+
+        .services-dark__card:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .services-dark__card .material-symbols-outlined {
+            font-size: 32px;
+            margin-bottom: var(--space-4);
+            opacity: 0.8;
+        }
+
+        .services-dark__card h3 {
+            font-family: var(--font-serif);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-3);
+        }
+
+        .services-dark__card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: var(--text-sm);
+            line-height: 1.7;
+            margin-bottom: var(--space-4);
+        }
+
+        .services-dark__card a {
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+            color: var(--color-white);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* CTA Section */
+        .services-cta {
+            background: var(--color-cream);
+            padding: var(--space-24) 0;
+            text-align: center;
+        }
+
+        .services-cta__title {
+            font-family: var(--font-serif);
+            font-size: var(--text-4xl);
+            font-weight: var(--font-normal);
+            margin-bottom: var(--space-4);
+        }
+
+        .services-cta__text {
+            color: var(--color-gray);
+            font-size: var(--text-lg);
+            max-width: 500px;
+            margin: 0 auto var(--space-10);
+        }
+
+        .services-cta__buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-5) var(--space-12);
+            background: var(--color-black);
+            color: var(--color-white);
+            font-size: 12px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: opacity var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-5) var(--space-12);
+            border: 1px solid var(--color-border);
+            color: var(--color-black);
+            font-size: 12px;
+            font-weight: var(--font-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+            border-color: var(--color-black);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .services-hero__title {
+                font-size: var(--text-4xl);
+            }
+
+            .service-block__inner {
+                grid-template-columns: 1fr;
+                gap: var(--space-10);
+            }
+
+            .service-block--reverse .service-block__inner {
+                direction: ltr;
+            }
+
+            .service-block__image {
+                order: -1;
+                aspect-ratio: 16/10;
+            }
+
+            .services-dark__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,142 +428,173 @@
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="service-hero">
-        <div class="container">
-            <h1 class="service-hero__title fade-in">Mes Services</h1>
-            <p class="service-hero__subtitle fade-in delay-100">
-                Un accompagnement personnalisé pour chaque étape de votre parcours
-            </p>
-        </div>
-    </section>
+    <main>
 
-    <!-- SERVICES GRID -->
-    <section class="services-grid">
-
-        <div class="service-card fade-in delay-100">
-            <h2 class="service-card__title">Thérapie Individuelle</h2>
-            <p class="service-card__text">
-                Explorez vos défis personnels dans un espace sécurisé et confidentiel.
-                Accompagnement sur mesure pour la croissance personnelle, la gestion
-                des émotions et le bien-être mental.
-            </p>
-            <a href="contact.html" class="service-card__link">
-                En savoir plus
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-
-        <div class="service-card fade-in delay-100">
-            <h2 class="service-card__title">Thérapie de Couple</h2>
-            <p class="service-card__text">
-                Renforcez votre relation, améliorez la communication et résolvez les conflits.
-                Un soutien pour traverser les étapes difficiles ensemble et retrouver l'harmonie.
-            </p>
-            <a href="contact.html" class="service-card__link">
-                En savoir plus
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-
-        <div class="service-card fade-in delay-200">
-            <h2 class="service-card__title">Enfants & Adolescents</h2>
-            <p class="service-card__text">
-                Soutien adapté pour les jeunes, aidant à gérer les émotions, le stress scolaire
-                et les défis du développement. Thérapie ludique et bienveillante.
-            </p>
-            <a href="contact.html" class="service-card__link">
-                En savoir plus
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-
-        <div class="service-card fade-in delay-200">
-            <h2 class="service-card__title">Anxiété & Stress</h2>
-            <p class="service-card__text">
-                Apprenez des techniques efficaces pour apaiser votre esprit, réduire le stress
-                et surmonter les troubles anxieux pour une vie plus sereine.
-            </p>
-            <a href="contact.html" class="service-card__link">
-                En savoir plus
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-
-        <div class="service-card fade-in delay-300">
-            <h2 class="service-card__title">Dépression</h2>
-            <p class="service-card__text">
-                Un espace de parole pour sortir de l'isolement, comprendre les mécanismes
-                de la dépression et retrouver progressivement goût à la vie.
-            </p>
-            <a href="contact.html" class="service-card__link">
-                En savoir plus
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-
-        <div class="service-card fade-in delay-300">
-            <h2 class="service-card__title">Burn-out</h2>
-            <p class="service-card__text">
-                Accompagnement spécifique pour l'épuisement professionnel. Reconstruire
-                ses limites, retrouver du sens et préparer un retour au travail serein.
-            </p>
-            <a href="contact.html" class="service-card__link">
-                En savoir plus
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
-        </div>
-
-    </section>
-
-    <!-- PRICING -->
-    <section class="pricing-section">
-        <div class="container fade-in">
-            <h2>Tarifs des consultations</h2>
-            <div class="pricing-table">
-                <div class="pricing-row">
-                    <span class="pricing-name">Consultation Individuelle</span>
-                    <span class="pricing-price">70€</span>
-                </div>
-                <div class="pricing-row">
-                    <span class="pricing-name">Thérapie de Couple</span>
-                    <span class="pricing-price">100€</span>
-                </div>
-                <div class="pricing-row">
-                    <span class="pricing-name">Enfant / Adolescent</span>
-                    <span class="pricing-price">60€</span>
+        <!-- HERO -->
+        <section class="services-hero">
+            <div class="container">
+                <p class="services-hero__label fade-in">Mes Accompagnements</p>
+                <h1 class="services-hero__title fade-in delay-100">
+                    Chemins Thérapeutiques<br>pour une <em>Vie Apaisée</em>
+                </h1>
+                <p class="services-hero__text fade-in delay-200">
+                    Une sélection de services psychologiques fondés sur des approches validées,
+                    conçus pour vous aider à retrouver votre paix intérieure.
+                </p>
+                <div class="services-hero__arrow fade-in delay-300">
+                    <span class="material-symbols-outlined">expand_more</span>
                 </div>
             </div>
-            <p style="margin-top: var(--space-8); font-size: var(--text-sm);">
-                Certaines mutuelles prennent en charge les séances de psychologie.<br>
-                Moyens de paiement acceptés : Chèques, Espèces, Virements.
-            </p>
-        </div>
-    </section>
+        </section>
+
+        <!-- SERVICE 1: Individual Therapy -->
+        <section class="service-block">
+            <div class="service-block__inner">
+                <div class="service-block__content fade-in">
+                    <span class="service-block__number">01 / Fondation</span>
+                    <h2 class="service-block__title">Thérapie Individuelle</h2>
+                    <p class="service-block__text">
+                        Au cœur de ma pratique se trouve votre parcours personnel. Je vous offre un sanctuaire —
+                        un espace sûr et confidentiel où vous pouvez déconstruire les obstacles à votre épanouissement.
+                        Que vous traversiez une transition majeure ou cherchiez à comprendre des schémas de longue date,
+                        mon approche est profondément collaborative et empathique.
+                    </p>
+                    <div class="service-block__features">
+                        <div class="service-block__feature">
+                            <span class="material-symbols-outlined">check_circle</span>
+                            <span>Plans de traitement personnalisés adaptés à votre histoire.</span>
+                        </div>
+                        <div class="service-block__feature">
+                            <span class="material-symbols-outlined">check_circle</span>
+                            <span>Exploration sécurisée et sans jugement de soi.</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="service-block__link">
+                        En savoir plus
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="service-block__image fade-in delay-100">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=1000&fit=crop"
+                        alt="Chemin paisible en forêt">
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 2: Anxiety (Reversed) -->
+        <section class="service-block service-block--alt service-block--reverse">
+            <div class="service-block__inner">
+                <div class="service-block__content fade-in">
+                    <span class="service-block__number">02 / Stabilité</span>
+                    <h2 class="service-block__title">Anxiété & Gestion du Stress</h2>
+                    <p class="service-block__text">
+                        L'inquiétude chronique provient souvent d'un système nerveux qui a oublié comment se reposer.
+                        Mes techniques informées par le trauma vous aident à reprendre le contrôle physiologique.
+                        Nous allons au-delà des simples "mécanismes d'adaptation" pour aborder les causes profondes
+                        de votre stress.
+                    </p>
+                    <p class="service-block__text">
+                        À travers l'expérience somatique et la pleine conscience, vous apprendrez à calmer
+                        le bruit intérieur et à faire confiance à votre capacité de résilience.
+                    </p>
+                    <a href="contact.html" class="service-block__link">
+                        Trouvez votre calme
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="service-block__image fade-in delay-100">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&h=1000&fit=crop"
+                        alt="Lac calme au lever du jour">
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 3: Trauma Care -->
+        <section class="service-block">
+            <div class="service-block__inner">
+                <div class="service-block__content fade-in">
+                    <span class="service-block__number">03 / Guérison</span>
+                    <h2 class="service-block__title">Accompagnement du Trauma</h2>
+                    <p class="service-block__text">
+                        Guérir d'un trauma ne signifie pas oublier ; c'est reprendre possession de votre récit.
+                        Je suis formée à l'EMDR (Désensibilisation et Retraitement par Mouvements Oculaires)
+                        pour vous aider à traiter les expériences passées de manière sécurisée.
+                    </p>
+                    <p class="service-block__quote">
+                        "Le passé n'a plus à dicter les paramètres de votre bonheur futur."
+                    </p>
+                    <div class="service-cards">
+                        <div class="service-card-mini">
+                            <h4>EMDR</h4>
+                            <p>Traitement validé pour un soulagement durable.</p>
+                        </div>
+                        <div class="service-card-mini">
+                            <h4>Sécurité d'abord</h4>
+                            <p>Un rythme qui respecte vos limites.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-block__image fade-in delay-100">
+                    <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=800&h=1000&fit=crop"
+                        alt="Pierres empilées en équilibre">
+                </div>
+            </div>
+        </section>
+
+        <!-- DARK SECTION: Further Specializations -->
+        <section class="services-dark">
+            <div class="container">
+                <div class="services-dark__header fade-in">
+                    <h2 class="services-dark__title">Autres Spécialisations</h2>
+                    <div class="services-dark__line"></div>
+                </div>
+
+                <div class="services-dark__grid">
+                    <div class="services-dark__card fade-in delay-100">
+                        <span class="material-symbols-outlined">favorite</span>
+                        <h3>Thérapie de Couple</h3>
+                        <p>
+                            Renforcez votre relation, améliorez la communication et résolvez les conflits
+                            pour retrouver l'harmonie ensemble.
+                        </p>
+                        <a href="contact.html">Découvrir</a>
+                    </div>
+
+                    <div class="services-dark__card fade-in delay-200">
+                        <span class="material-symbols-outlined">child_care</span>
+                        <h3>Enfants & Adolescents</h3>
+                        <p>
+                            Accompagnement adapté aux jeunes pour gérer les émotions, le stress scolaire
+                            et les défis du développement.
+                        </p>
+                        <a href="contact.html">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="services-cta">
+            <div class="container fade-in">
+                <h2 class="services-cta__title">Prêt(e) à commencer votre parcours ?</h2>
+                <p class="services-cta__text">
+                    Le premier pas est souvent le plus difficile. Je vous invite à prendre contact
+                    pour un premier échange sans engagement.
+                </p>
+                <div class="services-cta__buttons">
+                    <a href="contact.html" class="btn-primary">Prendre Rendez-vous</a>
+                    <a href="approche.html" class="btn-secondary">En savoir plus</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer__left">
             <a href="index.html">Retour à l'accueil</a>
-            <span>&copy; 2024 Sophie Laurent</span>
+            <span>© 2024 Sophie Laurent</span>
         </div>
         <div class="footer__right">
             <a href="mentions-legales.html">Mentions légales</a>

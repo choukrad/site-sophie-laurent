@@ -60,7 +60,8 @@
             border: 1px solid var(--color-border);
             max-width: 1100px;
             margin: 0 auto;
-            overflow: hidden;
+            position: relative;
+            z-index: 10;
         }
 
         .booking-grid {
@@ -231,8 +232,12 @@
         /* Form Section */
         .form-section {
             padding: var(--space-10);
+            padding-bottom: var(--space-16);
+            /* Extra space for dropdown */
             border-top: 1px solid var(--color-border);
             background: var(--color-white);
+            position: relative;
+            overflow: visible;
         }
 
         .booking-form {
@@ -409,7 +414,8 @@
             max-height: 0;
             overflow: hidden;
             opacity: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: max-height var(--transition-base), opacity var(--transition-fast);
         }
 
